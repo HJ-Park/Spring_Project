@@ -9,7 +9,7 @@
 <form action="signup" method="get">
 <button>로그인</button>
 </form>
-<form>
+<form action="login" method="get">
 <button>회원가입</button>
 </form>
 

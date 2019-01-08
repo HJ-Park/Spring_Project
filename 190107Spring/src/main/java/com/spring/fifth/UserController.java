@@ -19,7 +19,7 @@ public class UserController {
 	UserDao ud;
 	
 
-	@RequestMapping(value = "/signup", method = RequestMethod.POST)
+	@RequestMapping(value = "/signup", method = RequestMethod.GET)
 	public String signup(User user, Model model) {
 		
 		return "signup";
@@ -38,7 +38,7 @@ public class UserController {
 		}
 	}
 	
-	@RequestMapping(value = "/login", method = RequestMethod.POST)
+	@RequestMapping(value = "/login", method = RequestMethod.GET)
 	public String login() {
 		
 		return "login";
