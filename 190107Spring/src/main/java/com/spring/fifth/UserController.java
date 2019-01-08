@@ -27,9 +27,13 @@ public class UserController {
 	
 	@RequestMapping(value = "/signup_on", method = RequestMethod.POST)
 	public String signup_on(User user, Model model) {
-		
+		model.addAttribute("name", user.getName());
+		model.addAttribute("phone", user.getPhone());
+		model.addAttribute("email", user.getEmail());
+		model.addAttribute("birthdate", user.getBirthdate());
 		if(ud.insertUser(user) == 1) {
 			model.addAttribute("userid", user.getId());
+			
 			System.out.println("sucess commit");
 			return "login";
 		}else {

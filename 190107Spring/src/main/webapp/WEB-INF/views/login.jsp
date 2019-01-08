@@ -1,3 +1,4 @@
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -32,7 +33,7 @@
 
 
 <div>
-	<p><font color="blue">${name}</font></p><br>
+	<p><font color="blue">${name}さん歓迎します！！</font></p><br>
 	<p><font color="blue">${phone}</font></p><br>
 	<p><font color="blue">${email}</font></p><br>
 	<p><font color="blue">${birthdate}</font></p><br>
