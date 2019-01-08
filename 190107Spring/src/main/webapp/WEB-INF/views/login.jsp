@@ -33,7 +33,7 @@
 
 
 <div>
-	<p><font color="blue">${name}さん歓迎します！！</font></p><br>
+	<p><font color="blue">${name}<c:if test="${name}!= null" >さん歓迎します！！</c:if></font></p><br>
 	<p><font color="blue">${phone}</font></p><br>
 	<p><font color="blue">${email}</font></p><br>
 	<p><font color="blue">${birthdate}</font></p><br>
