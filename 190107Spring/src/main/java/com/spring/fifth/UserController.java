@@ -18,13 +18,13 @@ public class UserController {
 	@Autowired
 	UserDao ud;
 	
-
+	//会員加入ページヘ
 	@RequestMapping(value = "/signup", method = RequestMethod.GET)
 	public String signup(User user, Model model) {
 		
 		return "signup";
 	}
-	
+	//会員加入	メソード
 	@RequestMapping(value = "/signup_on", method = RequestMethod.POST)
 	public String signup_on(User user, Model model) {
 		model.addAttribute("name", user.getName());
@@ -37,18 +37,20 @@ public class UserController {
 			System.out.println("sucess commit");
 			return "login";
 		}else {
-			model.addAttribute("warnning","���Խ���");
+			model.addAttribute("warnning","가입실패");
 			return "signup";
 		}
 	}
 	
+	
+	//ログインページへ	
 	@RequestMapping(value = "/login", method = RequestMethod.GET)
 	public String login() {
 		
 		return "login";
 	}
 	
-	
+	//ログインメソード
 	@RequestMapping(value = "/login_on", method = RequestMethod.POST)
 	public String login_on(User user, Model model) {
 		
@@ -62,7 +64,7 @@ public class UserController {
 			System.out.println("sucess commit");
 			return "login";
 		}else {
-			model.addAttribute("warnning","�α��� ����");
+			model.addAttribute("warnning","로그인 실패");
 			return "login";
 		}	
 	}
