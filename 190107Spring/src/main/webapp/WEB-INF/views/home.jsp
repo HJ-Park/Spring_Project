@@ -22,6 +22,10 @@
 </c:if>
 
 <c:if test="${sessionScope.loginID!=null}">
+<form action="board" method="get">
+<button>보드로 가기</button>
+</form>
+
 <form action="logout" method="get">
 <button>로그아웃</button>
 </form>
