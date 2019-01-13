@@ -7,24 +7,41 @@
 <mapper namespace="com.spring.fifth.dao.BoardMapper">
 	<insert id="insertBoard" parameterType="board">
 		INSERT INTO BOARDINFO(
-			BOARDSEQ,
-			ID,
-			BOARDTITLE,
-			BOARDCONTENT,
-			HITCOUNT,
-			indate
+		BOARDSEQ,
+		ID,
+		BOARDTITLE,
+		BOARDCONTENT,
+		HITCOUNT,
+		indate
 		)
 		VALUES (
-			BOARDSEQ.nextval,
-			#{id},
-			#{boardtitle},
-			#{boardcontent},
-			'0',
-			sysdate
+		BOARDSEQ.nextval,
+		#{id},
+		#{boardtitle},
+		#{boardcontent},
+		'0',
+		sysdate
 		)
 	</insert>
 
 	<select id="selectAllBoard" resultType="Board">
+		select
+		boardseq,
+		id,
+		boardtitle,
+		boardcontent,
+		hitcount,
+		indate
+		from
+		boardinfo
+		order by
+		indate
+
+	</select>
+
+
+	<select id="selectBoard" parameterType="String"
+		resultType="Board">
 		select
 			boardseq,
 			id,
@@ -34,8 +51,120 @@
 			indate
 		from
 			boardinfo
-		
+		where
+			boardseq=#{boardseq}
+
 	</select>
 
+	<update id="updateBoard" parameterType="board">
+		update boardinfo
+		set
+		boardtitle = #{boardtitle},
+		boardcontent = #{boardcontent}
+		where
+		boardseq = #{boardseq}
 
+
+	</update>
+
+	<delete id="removeBoard" parameterType="board">
+		delete from boardinfo
+		where
+			boardseq = #{boardseq}
+		
+	</delete>
+	
+	<update id="updateBoardHit" parameterType="String">
+		update boardinfo
+		set
+		hitcount=hitcount+1
+		where
+		boardseq = #{boardseq}
+	
+	</update>
+
+
+	<insert id="insertComment" parameterType="comments">
+		INSERT INTO COMMENTS(
+		COMMENTSSEQ,
+		BOARDSEQ,
+		ID,
+		COMMENTS,
+		INDATE
+		)
+		VALUES (
+		commentseq.nextval,
+		#{boardseq},
+		#{id},
+		#{comments},
+		sysdate
+		)
+	</insert>
+	
+	<select id="selectPostComments" parameterType="String" resultType="comments">
+		select
+			COMMENTSSEQ,
+			BOARDSEQ,
+			ID,
+			COMMENTS,
+			INDATE,
+			PARENTSEQ,
+			TARGETID
+		from
+			comments
+		where
+			boardseq = #{boardseq}
+		order by
+			commentsseq
+	</select>
+	
+	<insert id="insertReComment" parameterType="comments">
+		INSERT INTO COMMENTS(
+		COMMENTSSEQ,
+		BOARDSEQ,
+		ID,
+		COMMENTS,
+		INDATE,
+		PARENTSEQ,
+		TARGETID
+		)
+		VALUES (
+		commentseq.nextval,
+		#{boardseq},
+		#{id},
+		#{comments},
+		sysdate,
+		#{parentseq},
+		#{targetid}
+		)
+	</insert>
+
+
+	<update id="updateComment" parameterType="comments">
+		update
+			comments
+		set
+			comments = #{comments}
+		where
+			commentsseq = #{commentsseq}
+	</update>
+	
+	
+	<update id="updateRemoveComment" parameterType="comments">
+		update
+			comments
+		set
+			comments = #{comments},
+			id = #{id}
+		where
+			commentsseq = #{commentsseq}
+	</update>
+	
+	
+	<delete id="deleteReComment" parameterType="comments">
+		delete
+			comments
+		where
+			commentsseq = #{commentsseq}
+	</delete>
 </mapper>

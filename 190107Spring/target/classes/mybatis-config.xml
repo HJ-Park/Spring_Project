@@ -6,6 +6,7 @@
 	<typeAliases>
 		<typeAlias type="com.spring.fifth.vo.User" alias="user" />
 		<typeAlias type="com.spring.fifth.vo.Board" alias="board" />
+		<typeAlias type="com.spring.fifth.vo.Comments" alias="comments" />
 	</typeAliases>
 	<mappers>
 		<mapper resource="Mapper/UserMapper.xml" />

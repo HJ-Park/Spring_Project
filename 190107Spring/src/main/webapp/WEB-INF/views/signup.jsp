@@ -25,9 +25,9 @@
       <input type="text" placeholder="Userid" name="id" value="${id}">
       <input type="password" placeholder="Password" name="pw" value="${pw}">
       <input type="text" placeholder="UserName" name="name" value="${name}">
-      <input type="text" placeholder="UserPhone" name="phone" value="${phone}>
-      <input type="text" placeholder="UserEmail" name="email" value="${email}>
-      <input type="text" placeholder="UserBirthdate" name="birthdate" value="${birthdate}>
+      <input type="text" placeholder="UserPhone" name="phone" value="${phone}">
+      <input type="text" placeholder="UserEmail" name="email" value="${email}">
+      <input type="text" placeholder="UserBirthdate" name="birthdate" value="${birthdate}">
       
         <input type="submit" value="SUBMIT" />
     </form>
