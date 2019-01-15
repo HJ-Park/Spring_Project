@@ -81,24 +81,29 @@
 							<div id="i9187x" class="form-group">
 								<c:if test="${sessionScope.loginID!=null}">
 									<c:if test="${!empty comment.id}">
-									<form id="rere_form" action="insertrecomment" method="post">
-										<button type="button" id="rere${comment.commentsseq}"
-											class="re_button"
-											onclick="showDiv_rere('rere${comment.commentsseq}')">답글</button>
 
-										<div id="divrere${comment.commentsseq}" style="display: none;">
-											<input type="hidden" name="boardseq"
-												value="${board.boardseq}"> <input type="hidden"
-												name="parentseq" value="${comment.commentsseq}"> <input
-												type="hidden" name="targetid" value="${comment.id}">
-											<input type="text" name="comments">
-											<button type="submit">작성</button>
-										</div>
-									</form>
+										<form id="rere_form${comment.commentsseq}" action="insertrecomment" method="post">
+
+											<button type="button" id="rere${comment.commentsseq}"
+												class="re_button"
+												onclick="showDiv_rere('rere${comment.commentsseq}')">답글</button>
+
+											<div id="divrere${comment.commentsseq}"
+												style="display: none;">
+												<input type="hidden" name="boardseq"
+													value="${board.boardseq}"> <input type="hidden"
+													name="parentseq" value="${comment.commentsseq}"> <input
+													type="hidden" name="targetid" value="${comment.id}">
+												
+													<input type="text" name="comments">
+													<button type="submit">작성</button>
+												
+											</div>
+										</form>
+										
 									</c:if>
 									<c:if test="${sessionScope.loginID==comment.id}">
-										<form id="modify${comment.commentsseq}" action="updatecomment"
-											method="post">
+										<form id="modify${comment.commentsseq}" action="updatecomment" method="post">
 											<button type="button" id="remod${comment.commentsseq}"
 												class="re_button"
 												onclick="showDiv_rere('remod${comment.commentsseq}')">수정</button>
@@ -108,15 +113,18 @@
 												<input type="hidden" name="boardseq"
 													value="${board.boardseq}"> <input type="hidden"
 													name="commentsseq" value="${comment.commentsseq}">
+
 												<input type="text" name="comments"
 													value="${comment.comments}">
 												<button type="submit">수정</button>
+
 											</div>
 
 										</form>
 										<form id="ihch1p" action="deleteComment" method="post">
-											<input type="hidden" name="commentsseq" value="${comment.commentsseq}">
-											<input type="hidden" name="boardseq" value="${board.boardseq}">
+											<input type="hidden" name="commentsseq"
+												value="${comment.commentsseq}"> <input type="hidden"
+												name="boardseq" value="${board.boardseq}">
 											<button type="submit" id="io3sdf" class="re_button">삭제</button>
 										</form>
 									</c:if>
@@ -138,44 +146,48 @@
 								<div class="cell" id="ias5fj">${recomment.comments}</div>
 								<div class="cell" id="ikzqbv">${recomment.indate}</div>
 								<div class="form-group">
-									<form id="rere_form" action="insertrecomment" method="post">
-										<button type="button" id="rere${recomment.commentsseq}"
-											class="re_button"
-											onclick="showDiv_rere('rere${recomment.commentsseq}')">답글</button>
+									<c:if test="${sessionScope.loginID!=null}">
+										<form id="rere_form${recomment.commentsseq}" action="insertrecomment" method="post">
+											<button type="button" id="rere${recomment.commentsseq}"
+												class="re_button"
+												onclick="showDiv_rere('rere${recomment.commentsseq}')">답글</button>
 
-										<div id="divrere${recomment.commentsseq}"
-											style="display: none;">
-											<input type="hidden" name="boardseq"
-												value="${board.boardseq}"> <input type="hidden"
-												name="parentseq" value="${comment.commentsseq}"> <input
-												type="hidden" name="targetid" value="${recomment.id}">
-											<input type="text" name="comments">
-											<button type="submit">작성</button>
-										</div>
-									</form>
-									<c:if test="${sessionScope.loginID==recomment.id}">
-									<form id="modify${recomment.commentsseq}" action="updatecomment"
-										method="post">
-										<button type="button" id="remod${recomment.commentsseq}"
-											class="re_button"
-											onclick="showDiv_rere('remod${recomment.commentsseq}')">수정</button>
+											<div id="divrere${recomment.commentsseq}"
+												style="display: none;">
+												<input type="hidden" name="boardseq"
+													value="${board.boardseq}"> <input type="hidden"
+													name="parentseq" value="${comment.commentsseq}"> <input
+													type="hidden" name="targetid" value="${recomment.id}">
+												<input type="text" name="comments">
+												<button type="submit">작성</button>
+											</div>
+										</form>
+										<c:if test="${sessionScope.loginID==recomment.id}">
+											<form id="modify${recomment.commentsseq}"
+												action="updatecomment" method="post">
+												<button type="button" id="remod${recomment.commentsseq}"
+													class="re_button"
+													onclick="showDiv_rere('remod${recomment.commentsseq}')">수정</button>
 
-										<div id="divremod${recomment.commentsseq}"
-											style="display: none;">
-											<input type="hidden" name="boardseq"
-												value="${board.boardseq}"> <input type="hidden"
-												name="commentsseq" value="${recomment.commentsseq}"> <input
-												type="text" name="comments" value="${recomment.comments}">
-											<button type="submit">수정</button>
-										</div>
+												<div id="divremod${recomment.commentsseq}"
+													style="display: none;">
+													<input type="hidden" name="boardseq"
+														value="${board.boardseq}"> <input type="hidden"
+														name="commentsseq" value="${recomment.commentsseq}">
+													<input type="text" name="comments"
+														value="${recomment.comments}">
+													<button type="submit">수정</button>
+												</div>
 
-									</form>
-									<form id="ihch1p" action="deleteReComment" method="post">
-											<input type="hidden" name="commentsseq" value="${recomment.commentsseq}">
-											<input type="hidden" name="boardseq" value="${board.boardseq}">
-									
-										<button type="submit" class="re_button">삭제</button>
-									</form>
+											</form>
+											<form id="ihch1p" action="deleteReComment" method="post">
+												<input type="hidden" name="commentsseq"
+													value="${recomment.commentsseq}"> <input
+													type="hidden" name="boardseq" value="${board.boardseq}">
+
+												<button type="submit" class="re_button">삭제</button>
+											</form>
+										</c:if>
 									</c:if>
 								</div>
 							</div>

@@ -121,11 +121,11 @@ body {
   background-color:#ffffff;
   width:200px;
 }
-#rere_form{
-  height:25px;
+/* #rere_form{
+  height:auto;
   min-height:25px;
   margin:0 0 0 0;
-}
+} */
 #iw9cp7{
   margin:0 0 0 0;
   height:25px;
@@ -156,9 +156,11 @@ body {
 }
 .re_box{
   background-color:#f9f583;
+  height:auto;
 }
 .re_boxes{
   background-color:#ba9600;
+  height:auto;
 }
 #iebqtu{
   flex-basis:200px;
