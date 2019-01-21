@@ -1,0 +1,15 @@
+jQuery(function($) {		
+	
+		
+	
+	$(document).ready(function() {		
+		
+		$('.xet_gnb_m select').selectric();	
+		
+		
+						
+	});
+	
+        
+		
+});

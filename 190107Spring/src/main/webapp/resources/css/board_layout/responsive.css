@@ -1,0 +1,112 @@
+
+
+@media (min-width: 1400px) {
+	.xet_container { 
+		width: 1400px; 
+	}	
+	[class*="xet_span"] {
+	    float: left;
+	    min-height: 1px;
+	  }
+	.xet_span1 {
+		width:10%;
+	}
+	.xet_span2 {
+		width:20%;
+	}
+	.xet_span3 {
+		width:30%;
+	}
+	.xet_span4 {
+		width:40%;
+	}
+	.xet_span5 {
+		width:50%;
+	}
+	.xet_span6 {
+		width:60%;
+	}
+	.xet_span7 {
+		width:70%;
+	}
+	.xet_span8 {
+		width:80%;
+	}
+	.xet_span9 {
+		width:90%;
+	}
+	.xet_span10 {
+		width:100%;
+	}
+	
+}
+@media (min-width: 980px) and (max-width: 1399px) {	
+	
+	
+}
+
+@media (max-width: 1399px) {	
+	.xet_container { 
+		width: 100% !important; 
+		padding: 0 15px;
+	}	
+	
+}
+
+@media (min-width: 768px) and (max-width: 979px) {	
+	
+	
+	
+	
+	
+	
+}
+
+@media (max-width: 979px) {	
+	
+}
+
+@media (min-width: 480px) and (max-width: 767px) {
+		
+	
+			
+}
+
+@media (max-width: 767px) {
+	
+	.xet_gnb {
+		display: none;
+	}
+	.xet_gnb_m {
+		display: block;
+	}
+			
+}
+
+@media (min-width: 320px) and (max-width: 479px) {	
+		
+	
+	
+	
+	
+}
+
+
+
+
+
+
+
+
+/* Retina Display */
+
+@media only screen and (-webkit-min-device-pixel-ratio: 2),
+ 	only screen and (-moz-min-device-pixel-ratio: 2),
+  	only screen and (-o-min-device-pixel-ratio: 2/1),
+  	only screen and (min-device-pixel-ratio: 2),
+  	only screen and (min-resolution: 2dppx) {
+		
+		
+	}
+
+
