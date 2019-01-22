@@ -1,6 +1,7 @@
 package com.spring.sixth.dao;
 
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.session.RowBounds;
 
@@ -13,7 +14,7 @@ public interface BoardMapper {
 	
 	public int insertFile(BoardFile boardFile);// 파일 넣기
 
-	public List<Board> selectAllBoard(RowBounds rb);//모든 게시글 불러오기
+	public List<Board> selectAllBoard(RowBounds rb, Map<String, String> map);//모든 게시글 불러오기
 	
 	public List<BoardFile> selectFile(String boardseq);//파일불러오기
 
@@ -39,5 +40,5 @@ public interface BoardMapper {
 	public void deleteReComment(Comments com);		//대댓글~ 삭제하기
 	
 	
-	public int countRecord();
+	public int countRecord(Map<String, String> map);
 }

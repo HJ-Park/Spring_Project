@@ -12,8 +12,10 @@
 			count(boardseq)
 		from
 			boardinfo
-	
-	
+		<if test = "search_keyword!=null">
+		where
+			boardtitle like '%'||#{search_keyword}||'%'
+		</if>
 	</select>
 	
 	
@@ -63,10 +65,14 @@
 		indate
 		from
 		boardinfo
+		
+		<if test = "search_keyword!=null">
+		where
+			boardtitle like '%'||#{search_keyword}||'%'
+		</if>
 		order by
 		indate
 		desc
-
 	</select>
 
 
@@ -157,7 +163,7 @@
 		from
 		comments
 		where
-		boardseq = #{boardseq}
+		boardtitle like "%"||#{search_keyword}||"%"
 		order by
 		commentsseq
 	</select>

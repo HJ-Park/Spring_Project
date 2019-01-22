@@ -5,9 +5,10 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServletResponse;
@@ -19,6 +20,7 @@ import org.springframework.ui.Model;
 import org.springframework.util.FileCopyUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.spring.sixth.dao.BoardDao;
@@ -38,32 +40,39 @@ public class BoardController {
 
 	@RequestMapping(value = "/board_list", method = RequestMethod.GET)
 	public String board_list(HttpSession session, Model model) {
-		return "redirect:/pageNum?page=1";
+		return "redirect:/pageNum";
 	}
 
 	
 	
 	@RequestMapping(value = "/goPage", method = RequestMethod.GET)
-	public String goPage(HttpSession session, Model model, int page) {
+	public String goPage(HttpSession session, Model model, int page, String search_keyword) {
 		if(1>page) { //0또는 음수값 처리
 			page = 1;
 		}
-		return "redirect:/pageNum?page="+page;
+		return "redirect:/pageNum?page="+page+"&search_keyword="+search_keyword;
 	}
 	
 	@RequestMapping(value = "/pageNum", method = RequestMethod.GET)
-	public String pageNum(HttpSession session, Model model, int page) {
+	public String pageNum(HttpSession session, Model model, 
+			@RequestParam(value="page",defaultValue="1")int page,
+			@RequestParam(value="search_keyword",defaultValue="")String search_keyword) {	//RequestParam null이 들어왔을때 디폴트를 넣어 
+		Map<String,String> map = new HashMap();
 		
-		int totalRecord = bd.countRecord();
+		map.put("search_keyword", search_keyword);
+		int totalRecord = bd.countRecord(map);
 		
+		System.out.println(map);
 		//전체 페이지 = (총글 레코드수 + 페이지당 글 목록수 -1)/페이지당 글 목록수
+		
+		
 		int totalPage = (totalRecord+boardPerPage-1)/boardPerPage;
 		if(page> totalPage) {
 			page = totalPage;
 		}
 		
 		PageNavigator pn = new PageNavigator(boardPerPage, pagePerGroup, page/*currentPage*/, totalRecord);
-		List<Board> boardList = bd.selectAllBoard(pn);
+		List<Board> boardList = bd.selectAllBoard(pn,map);
 		System.out.println(boardList);
 		
 		model.addAttribute("boardList", boardList);

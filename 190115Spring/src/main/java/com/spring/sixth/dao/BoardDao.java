@@ -1,6 +1,7 @@
 package com.spring.sixth.dao;
 
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.session.RowBounds;
 import org.apache.ibatis.session.SqlSession;
@@ -47,7 +48,7 @@ public class BoardDao {
 
 	}
 
-	public List<Board> selectAllBoard(PageNavigator pn) {
+	public List<Board> selectAllBoard(PageNavigator pn, Map<String, String> map) {
 		List<Board> result = null;
 		//xml 건들필요 없이 RowBounds만 파라메터로 넘겨주면 그 범위만큼만 셀렉해서 돌아옴
 		RowBounds rb = new RowBounds(pn.getStartBoardCurrentPage(), pn.getBoardPerPage());// 어디 위치 부터 몇개 까지 한페이지당 몇개인지
@@ -56,7 +57,7 @@ public class BoardDao {
 
 		try {
 
-			result = mapper.selectAllBoard(rb);
+			result = mapper.selectAllBoard(rb,map);
 			if (result.size() == 0) {
 				result = null;
 			}
@@ -198,11 +199,11 @@ public class BoardDao {
 
 	
 	
-	public int countRecord() {
+	public int countRecord(Map<String, String> map) {
 		BoardMapper mapper = sqlSession.getMapper(BoardMapper.class);
 		int result = 0;
 		try {
-			result = mapper.countRecord();
+			result = mapper.countRecord(map);
 		} catch (Exception e) {
 			e.printStackTrace();
 			return 0;

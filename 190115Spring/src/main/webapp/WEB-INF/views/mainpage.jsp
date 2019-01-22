@@ -31,13 +31,6 @@
 		<h1>${sessionScope.loginID}님환영합니다.</h1>
 	</c:if>
 
-	<form action="fileUpload" enctype="multipart/form-data" method="post">
-		<!-- 파일 전송을 위한 폼 속성 추가 -->
-		<input type="file" name="uploadFile"> <input type="submit"
-			value="send">
-	</form>
-
-	<a href="fileDownload?downloadFile=${fileName}">${fileName}</a>
 
 
 
@@ -45,7 +38,7 @@
 	<div class="xet_body_content w" id="iawul7">
 		<div class="xet_container">
 			<div class="b_title" id="iepwqh">
-				<h2 id="izi673">심플보드 - 업로드 게시판</h2>
+				<h2 id="izi673">업로드 게시판</h2>
 			</div>
 			<div class="xet_content" id="iuruzi">
 				<div id="xet_board">
@@ -81,7 +74,7 @@
 												class="visible-xs hidden-sm"><i title="날짜"
 													class="xi-time"> </i> ${b.indate} <i title="작성자"
 													class="xi-user"> </i> ${b.id} </span></td>
-											<td class="author hidden-xs">${b.id}</a></td>
+											<td class="author hidden-xs">${b.id}</td>
 											<td class="date hidden-xs">${b.indate}</td>
 											<td class="reading hidden-xs">${b.hitcount}</td>
 										</tr>
@@ -119,28 +112,25 @@
 					</ul>
 					<div class="boardNavigation">
 						<div class="float_left boardSearch">
-							<form action="https://xetemplate.cafe24.com/" method="get"
+							<form action="pageNum" method="get"
 								onsubmit="return procFilter(this, search)" id="fo_search"
 								class="boardSearchForm">
-								<input type="hidden" name="act" value="" /><input type="hidden"
-									name="vid" value="" /><input type="hidden" name="mid"
-									value="simple_board_list" /><input type="hidden"
-									name="category" value="" />
+								<!-- <input type="hidden" name="category" value="" /> -->
 								<div class="boardSearch">
-									<span class="l-r3"><select name="search_target"><option
-												value="title_content">제목+내용</option>
+									<span class="l-r3"><select name="search_target">
+											<option	value="title_content">제목+내용</option>
 											<option value="title">제목</option>
 											<option value="content">내용</option>
 											<option value="comment">댓글</option>
 											<option value="nick_name">닉네임</option>
-											<option value="tag">태그</option></select></span><input type="text"
-										name="search_keyword" value="" title="검색" accesskey="S"
-										placeholder="검색" class="inputText" /><span
-										class="search_btn_wrp r-r3"><button type="submit"
-											onclick="jQuery(this).parents('form#fo_search').submit();return false;"
-											class="search_btn light">
-											<i class="xi-magnifier"> </i><span class="hidden-xs">
-												검색</span>
+											<option value="tag">태그</option></select></span>
+											
+											
+											<input type="text" name="search_keyword" value="" title="검색" accesskey="S"
+										placeholder="검색" class="inputText" />
+										<span class="search_btn_wrp r-r3">
+										<button type="submit" class="search_btn light">
+											<span class="hidden-xs">검색</span>
 										</button></span>
 								</div>
 							</form>
@@ -158,6 +148,7 @@
 				</div>
 			</div>
 		</div>
+	</div>
 	</div>
 
 	<footer id="xet_footer">
